@@ -1,10 +1,10 @@
 # docker-sheet-cheat
 
-comando run
+### comando run
 exemplo:
-
+```
 docker container run debian bash --version
-
+```
 esse comando tem 4 comandos implicitos nele, que são os seguintes comandos:
 
 fará o download da imagem se a imagem não existir
