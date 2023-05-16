@@ -140,9 +140,9 @@ docker run -p 80:80 ex-simple-build
 se acessar no navegador o endereço localhost:80 veremos o resultado de uma pagina html com a mensagem Hello World !
 
 NETWORK
-
-#docker network ls 
-
+```
+docker network ls 
+```
 Lista os tipos de redes do container exceto o Overlay Network que é do Swarm (Ferramenta de Cluster do Docker), exemplo abaixo é da saida do comando #docker network ls:
 
 NETWORK ID          NAME                DRIVER              SCOPE
@@ -150,7 +150,9 @@ NETWORK ID          NAME                DRIVER              SCOPE
 43f21dc662a7        host                host                local
 2637b79624f1        none                null                local
 
-#docker network create --driver bridge rede_nova
+```
+docker network create --driver bridge rede_nova
+```
 Comando cria uma nova rede com draiver bridge e com o nome rede_nova, se listarmos com o comando #docker network ls iremos ver que a rede foi criada, abaixo a rede_nova na lista:
 
 NETWORK ID          NAME                DRIVER              SCOPE
@@ -159,20 +161,22 @@ NETWORK ID          NAME                DRIVER              SCOPE
 2637b79624f1        none                null                local
 39d8c350e101        rede_nova           bridge              local
 
-
- 
-
-#docker network inspect [driver-da-rede] [nome-da-rede] 
+```
+docker network inspect [driver-da-rede] [nome-da-rede] 
+```
 Mostra arquivo com as configurações da rede
-
-#docker run -d --name container3 --net rede_nova alpine sleep 1000
+```
+docker run -d --name container3 --net rede_nova alpine sleep 1000
+```
 esse exemplo estamos iniciando um container no modo daemon(-d) (background) dando o nome(--name) de container3 e dizendo que ele fara parte da rede(--net) com o nome de rede_nova e sera usada a imagem do alpine
-
-#docker network connect bridge container3
+```
+docker network connect bridge container3
+```
 esse comando conecta(connect) na rede de nome bridge o conteiner3, o uso disso é util para que o container consiga se comunicar com os conteiners que estão na rede bridge, pois são redes de faixas diferentes. Basicamente esse comando adiciona uma outra interface de rede no container com a faixa de rede da rede  que adicionamos
 
-
-#docker network disconnect bridge container3
+```
+docker network disconnect bridge container3
+```
 remove a conexão com a rede de nome bridge
 
 DOCKER COMPOSE
