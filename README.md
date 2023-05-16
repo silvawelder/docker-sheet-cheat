@@ -33,57 +33,68 @@ docker ps -a
 ```
 lista todos os containers que foram executados, independente do status
 
-
-#docker run --rm
-
+```
+docker run --rm
+```
 exemplo de um container nginx rodando na porta 80 do container
 
-#docker run -p 8080:80 nginx
-
+```
+docker run -p 8080:80 nginx
+```
 a porta 8080 seria a porta externa para acessar o nginx e a porta 80 seria a interna do nginx
 
 Exemplo de montagem de volume(diretório), container apontando para um diretório fora dele, no exemplo esta apontando para o diretório corrente $(pwd) no subdiretório /html, após os dois pontos ":" é o diretório padrão do nginx onde ele olha para encontrar as paginas html
-  
-#docker run -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
 
+```
+docker run -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
+```
 Esse exemplo é interessante, pois quando estamos desenvolvendo numa máquina nosso código, ele será executado no container que tem todas as dependencias necessárias que a aplicação que estamos desenvolvendo precise
-
-#docker run -d
-
+```
+docker run -d
+```
 esse comando executa um container no modo daemon(programa que é executado em plano de fundo ou background) 
+```
+docker run -d --name ex-daemon-basic -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
+```
 
-#docker run -d --name ex-daemon-basic -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
-
-
-
-#docker stop [nome-do-container] ou #docker stop [container-id]
+```
+docker stop [nome-do-container] ou #docker stop [container-id]
+```
 comando para parar a execução de um container, é interessante para parar um container executando no modo daemon (background), lembrando que para vermos o CONTAINER ID basta executar o comando #docker ps
 
-#docker start [nome-do-container] ou #docker start [container-id]
+```
+docker start [nome-do-container] ou #docker start [container-id]
+```
 comando para iniciar a execução de um container
-
-#docker restart [nome-do-container] ou #docker restart [container-id]
+```
+docker restart [nome-do-container] ou #docker restart [container-id]
+```
 comando para reiniciar um container
-
-#docker logs [nome-do-container] ou #docker logs [container-id]
+```
+docker logs [nome-do-container] ou #docker logs [container-id]
+```
 mostra logs referente ao container
-
-#docker inspect [nome-do-container] ou #docker inspect [container-id]
+```
+docker inspect [nome-do-container] ou #docker inspect [container-id]
+```
 mostra em formato json varias informações sobre o container como: que tipo de imagem ele se baseia, informações de rede, volume, onde está o diretório de log, entre todas as outras informações que compõe o container.
 
-IMAGE
-
-#docker image pull [nome-imagem]
+## IMAGE
+```
+docker image pull [nome-imagem]
+```
 Baixa imagem de um regitry(repositório onde contém varias imagens de docker, exemplo: hub.docker.com)
-
-#docker image pull redis:latest  
+```
+docker image pull redis:latest  
+```
 esse exemplo baixa uma imagem di redis após o dois pontos":" a flag latest indica a ultima versão da imagem, se quisermos indicar outra versão da imagem, basta especificar nessa flag.
-
-#docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+```
+docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+```
 cria uma outra tag para uma imagem, é a mesma imagem só que com tag diferente, se reparamos no hash da imagem é o mesmo no IMAGE ID, abaixo um exemplo
-
-#docker image rm code-regis:latest redis:latest
-
+```
+docker image rm code-regis:latest redis:latest
+```
 ao executar um #docker image ls temos o resultado seguinte:
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 nginx               latest              bc9a0695f571        6 days ago          133MB
@@ -109,9 +120,9 @@ o FROM indica qual a imagem será executada
 o RUN executa tudo que esta nessa linha
 
 3 - Acessar o diretório onde esta o arquivo Dockerfile e executar o comando abaixo:
-
-#docker image build -t ex-simple-build . 
-
+```
+docker image build -t ex-simple-build . 
+```
 docker image build -> "compila"/"constrói" a imagem
 -t [ex-simple-build]-> inserir a tag/nome da imagem 
 . -> é para executar no diretório corrente     
@@ -123,9 +134,9 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 ex-simple-build     latest              a91c1c45a069        7 seconds ago       133MB
 
 4 - agora que temos a imagem pronta, podemos criar o container
-
-#docker run -p 80:80 ex-simple-build 
-
+```
+docker run -p 80:80 ex-simple-build 
+```
 se acessar no navegador o endereço localhost:80 veremos o resultado de uma pagina html com a mensagem Hello World !
 
 NETWORK
