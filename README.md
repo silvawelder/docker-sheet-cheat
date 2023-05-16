@@ -12,20 +12,25 @@ fará o download da imagem se a imagem não existir
 docker image pull
 ```
 fará a criação do container
-#docker container create
-
+```
+docker container create
+```
 fará a inicialização do container
-#docker container start
-
+```
+docker container start
+```
 fará a execução do container no modo interativo
-#docker container exec
+```
+docker container exec
+```
 é importante destacar que o comando run sempre executará um novo container ao usa-lo
-
-#docker container ps || #docker ps || #docker container ls || #docker container list 
+```
+docker container ps || #docker ps || #docker container ls || #docker container list 
+```
 lista quais os containers de status ativo
-
-
-#docker ps -a
+```
+docker ps -a
+```
 lista todos os containers que foram executados, independente do status
 
 
