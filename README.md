@@ -195,7 +195,7 @@ Acima é descrito superficialmente as partes de uma aplicação web muito simple
 
 curl -L "https://github.com/docker/compose/releases/download/1.27.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-## Debuging
+## Debugging
 
 To debug docker images add this bellow entrypoint to keeps running and do the docker exec -it to run your commands inside the container 
 ```
